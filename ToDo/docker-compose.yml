@@ -1,0 +1,6 @@
+services:
+  todolist:
+    container_name: todolist
+    build: .
+    ports:
+      - 8082:80
