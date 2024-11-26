@@ -1,0 +1,5 @@
+Build image
+docker image build -t todo .
+
+Run container
+docker container run --rm -it -p 8081:80 --name todo todo
