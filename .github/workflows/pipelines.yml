@@ -12,8 +12,8 @@ jobs:
     steps:
       # Verifica el código del repositorio
       - name: Checkout repository
-        uses: actions/checkout@
-      #Construye laimagen del docker prueba dos
+        uses: actions/checkout@v3
+      #Construye laimagen del docker
       - name: Build Docker image
         run: |
           cd ToDo
