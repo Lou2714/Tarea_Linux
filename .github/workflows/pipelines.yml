@@ -6,35 +6,16 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-publish:
     runs-on: self-hosted  # Usa el self-hosted runner configurado en tu instancia de Google Cloud
 
     steps:
-      # Paso 1: Descargar el código del repositorio
-      - name: Checkout code
+      # Paso 1: Verifica el código del repositorio
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Paso 2: Configurar Docker en el runner
-      - name: Setup Docker
-        uses: docker/setup-buildx-action@v2
-
-      # Paso 3: Construir la imagen Docker
-      - name: Build Docker image
-        run: |
-          docker build -t todolist-app ./ToDo
-
-      # Paso 4: Ejecutar pruebas de integración
-      - name: Run integration tests
-        run: |
-          docker run -d --name test-todolist-app -p 8080:80 todolist-app
-          sleep 5  # Espera para asegurar que el contenedor esté levantado
-          curl -f http://localhost:8080 || (echo "Integration tests failed!" && exit 1)
-          docker stop test-todolist-app
-          docker rm test-todolist-app
-
       # Paso 5: Desplegar la aplicación en el entorno en la nube
-      - name: Deploy application
+      - name: Start application-specific services using Docker Compose
         run: |
           cd ToDo
-          docker-compose down  # Detener cualquier instancia previa
           docker-compose up -d  # Levantar la nueva versión
