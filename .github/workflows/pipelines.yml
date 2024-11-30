@@ -18,4 +18,4 @@ jobs:
       - name: Start application-specific services using Docker Compose
         run: |
           cd ToDo
-          docker-compose up -d  # Levantar la nueva versión
+          docker-compose up -d
