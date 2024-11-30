@@ -12,7 +12,13 @@ jobs:
     steps:
       # Verifica el código del repositorio
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@
+      #Construye laimagen del docker
+      - name: Build Docker image
+        run: |
+          cd ToDo
+          sudo docker build -t todo-todolist .
+
       # Instalar docker compose
       - name: Install Docker Compose
         run: |
