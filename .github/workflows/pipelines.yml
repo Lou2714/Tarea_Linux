@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Paso 5: Desplegar la aplicación en el entorno en la nube
+      # Paso 2: levantar docker, prueba
       - name: Start application-specific services using Docker Compose
         run: |
           cd ToDo
