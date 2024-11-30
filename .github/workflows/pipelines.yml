@@ -13,9 +13,14 @@ jobs:
       # Paso 1: Verifica el código del repositorio
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      - name: Install Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version
       # Paso 2: levantar docker, prueba
       - name: Start application-specific services using Docker Compose
         run: |
           cd ToDo
-          docker-compose up -d
+          sudo docker-compose up -d
+      
