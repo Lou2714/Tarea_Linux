@@ -1,5 +1,5 @@
 const toDoInput = document.getElementById('todo_input');
-const addTaskBtn = document.getElementById('add_task');
+//const addTaskBtn = document.getElementById('add_task');
 const containerToDo = document.getElementById('toDo_container');
 
 
