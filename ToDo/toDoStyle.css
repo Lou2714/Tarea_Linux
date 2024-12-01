@@ -34,7 +34,7 @@ p,input,button,label{
 }
 #todo_input{
     border: none;
-    border-bottom: 2px solid #D96281;
+    border-bottom: 2px solid blueviolet;
     padding: 0.5rem;
     border-radius: 0.3rem;
     background-color: transparent;

@@ -40,6 +40,10 @@ jobs:
 
 
       #Despliegue
+      - name: Git pull
+        run: |
+          cd /home/miisao1325cx_gmail_com/Tarea_Linux/ToDo
+          git pull
       # Levantar docker
       - name: Start application-specific services using Docker Compose
         run: |
