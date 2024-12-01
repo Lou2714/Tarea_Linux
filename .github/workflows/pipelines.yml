@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-publish:
-    runs-on: self-hosted  # Usa el self-hosted runner configurado en tu instancia de Google Cloud
+    runs-on: self-hosted  # Usa el self-hosted runner configurado en mi instancia de Google Cloud
 
     steps:
       #Compilación
