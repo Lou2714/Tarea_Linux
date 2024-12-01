@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted  # Usa el self-hosted runner configurado en mi instancia de Google Cloud
 
     steps:
-      #Compilación
+      #Compilación 
       # Verifica el código del repositorio
       - name: Checkout repository
         uses: actions/checkout@v3
