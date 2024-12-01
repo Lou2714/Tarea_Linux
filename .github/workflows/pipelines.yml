@@ -10,6 +10,7 @@ jobs:
     runs-on: self-hosted  # Usa el self-hosted runner configurado en tu instancia de Google Cloud
 
     steps:
+      #Compilación
       # Verifica el código del repositorio
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,13 +19,18 @@ jobs:
         run: |
           cd ToDo
           sudo docker build -t todo-todolist .
-
       # Instalar docker compose
       - name: Install Docker Compose
         run: |
           sudo curl -L "https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version
+      
+      #Prueba
+
+      
+
+      #Despliegue
       # Levantar docker
       - name: Start application-specific services using Docker Compose
         run: |
