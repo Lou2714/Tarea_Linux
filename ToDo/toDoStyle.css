@@ -11,7 +11,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: var(--main-bg-color);
+    background-color: crimson;
 }
 h1{
     font-family: var(--font-family-title);
