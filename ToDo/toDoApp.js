@@ -9,23 +9,15 @@ const closeModal = document.getElementById('close_modal');
 const modifyInput = document.getElementById('editedTask_input');
 const addModifyTask = document.getElementById('add_edited_task');
 
-//Buscando los botones
-/*No es buena idea ya que solo va a obtener los elementos que ya tengan esa clase en el DOM, no de forma dinámica
-sino que estática
-const btnCompleteTask = document.querySelectorAll('.btn_actions--complete');
-
-btnCompleteTask.forEach(btn =>{
-    btn.addEventListener('click', (e)=>{
-        e.preventDefault();
-        console.log('Hola');
-        
-    })
-})
-*/
-
 //EventsListener de los botones
-addTaskBtn.addEventListener("click",validateInput);
-closeModal.addEventListener('click',closeModalFunction);
+// Asignar EventListeners solo si los elementos existen
+if (addTaskBtn) {
+    addTaskBtn.addEventListener("click", validateInput);
+  }
+  
+  if (closeModal) {
+    closeModal.addEventListener("click", closeModalFunction);
+  }  
 
 //Al recargar la pagina se muestre las tareas del local
 window.onload = () =>{
@@ -35,27 +27,39 @@ window.onload = () =>{
 }
 
 function validateInput() {
-    if (toDoInput.value == "") {
-        alert('Debe de escribir una tarea a realizar');
-    }else{
-        addTaskToToDoList();
-        toDoInput.value = ""; 
-    }
+    const toDoInput = document.getElementById('todo_input');
+  const containerToDo = document.getElementById('toDo_container');
+
+  if (toDoInput.value === "") {
+    alert('Debe de escribir una tarea a realizar');
+  } else {
+    addTaskToToDoList(toDoInput, containerToDo);
+    toDoInput.value = ""; 
+  }
 }
 
-function addTaskToToDoList() {
+function addTaskToToDoList(toDoInput, containerToDo) {
     let taskAdded = false;
 
     for (let i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) == toDoInput.value) {
             taskAdded = true;
-            
         }
     }
-    //Aqui digo que si la tarea ya ha sido añadida, no se debe de añadir nuevamente
-    taskAdded ? alert('Esta tarea ya ha sido añadida') : containerToDo.appendChild(createTaskContainer(toDoInput.value));
-    storageTask(toDoInput.value);
+
+    if (!taskAdded) {
+        // Verifica si containerToDo está definido antes de intentar usar appendChild
+        if (containerToDo) {
+            containerToDo.appendChild(createTaskContainer(toDoInput.value));
+        } else {
+            console.error('El contenedor de tareas no está definido.');
+        }
+        storageTask(toDoInput.value);
+    } else {
+        alert('Esta tarea ya ha sido añadida');
+    }
 }
+
 function taskCompleted(paragraph) {
     paragraph.className = 'complete_task';
 }
@@ -154,3 +158,5 @@ function displayTasks() {
     })
     
 }
+
+module.exports = { validateInput, addTaskToToDoList, storageTask, createTaskContainer, taskCompleted, displayTasks }

@@ -36,9 +36,9 @@ jobs:
           docker-compose --version
       
       #Prueba
-
-
-
+      - name: Run tests
+        run: |
+          npm test
       #Despliegue
       - name: Git pull
         run: |
