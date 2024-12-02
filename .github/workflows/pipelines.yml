@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-publish:
+  build:
     runs-on: self-hosted  # Usa el self-hosted runner configurado en mi instancia de Google Cloud
 
     steps:
@@ -34,11 +34,16 @@ jobs:
           sudo curl -L "https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version
-      
+  test:
+    runs-on: self-hosted
+    needs: build
       #Prueba
       - name: Run tests
         run: |
           npm test
+  deploy:
+    runs-on: self-hosted
+    needs: test
       #Despliegue
       - name: Git pull
         run: |
