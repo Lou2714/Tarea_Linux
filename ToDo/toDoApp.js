@@ -159,4 +159,5 @@ function displayTasks() {
     
 }
 
-module.exports = { validateInput, addTaskToToDoList, storageTask, createTaskContainer, taskCompleted, displayTasks }
+module.exports = { validateInput, addTaskToToDoList, storageTask, createTaskContainer, 
+    taskCompleted, displayTasks, deleteTask }
