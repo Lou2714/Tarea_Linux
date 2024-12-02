@@ -33,7 +33,7 @@ function validateInput() {
   if (toDoInput.value === "") {
     alert('Debe de escribir una tarea a realizar');
   } else {
-    addTaskToToDoList(toDoInput, containerToDo);
+    //addTaskToToDoList(toDoInput, containerToDo);
     toDoInput.value = ""; 
   }
 }
