@@ -33,7 +33,7 @@ function validateInput() {
   if (toDoInput.value === "") {
     alert('Debe de escribir una tarea a realizar');
   } else {
-    //addTaskToToDoList(toDoInput, containerToDo);
+    addTaskToToDoList(toDoInput, containerToDo);
     toDoInput.value = ""; 
   }
 }
@@ -50,7 +50,7 @@ function addTaskToToDoList(toDoInput, containerToDo) {
     if (!taskAdded) {
         // Verifica si containerToDo está definido antes de intentar usar appendChild
         if (containerToDo) {
-            containerToDo.appendChild(createTaskContainer(toDoInput.value));
+            //containerToDo.appendChild(createTaskContainer(toDoInput.value));
         } else {
             console.error('El contenedor de tareas no está definido.');
         }
